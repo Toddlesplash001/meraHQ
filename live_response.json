@@ -8,157 +8,6 @@
     },
     "workspaces": [
       {
-        "_id": "67e2a627df4d855c10bacad0",
-        "name": "IndiQube",
-        "buildingName": "Techpoint",
-        "slug": "indiqube-koramangala-3",
-        "location": "Koramangala",
-        "city": "Bangalore",
-        "region": "Bangalore",
-        "spaceType": "coworking",
-        "directions": {
-          "connectivityDetails": []
-        },
-        "loc": {
-          "type": "Point",
-          "coordinates": [
-            77.62760112208917,
-            12.93774835085911
-          ]
-        },
-        "isFavouritedWorkspace": false,
-        "meetingroomworkspace": {
-          "blockReserve": false,
-          "timings": "10:00 am to 07:00 pm - Monday to Friday",
-          "allowBookings": true,
-          "status": "LIVE",
-          "amenities": [
-            {
-              "amenity": "6412cc7c2bb2562034983131",
-              "details": [
-                "RO Water"
-              ]
-            },
-            {
-              "amenity": "5eeb456afe3dac48253f0b66",
-              "details": [
-                "Refrigerator"
-              ],
-              "description": "Mini nooks with access to microwave, beverage stations and water coolers"
-            },
-            {
-              "amenity": "6412cd0154d14f219f4199db",
-              "details": []
-            },
-            {
-              "amenity": "6412ccb42bb256203498313e",
-              "details": []
-            },
-            {
-              "amenity": "5eeb456afe3dac48253f0b84",
-              "details": []
-            },
-            {
-              "amenity": "6412ccc22bb256203498313f",
-              "isPaid": true,
-              "details": [
-                "Limited Parking"
-              ]
-            },
-            {
-              "amenity": "6412ccc22bb2562034983140",
-              "isPaid": true,
-              "details": [
-                "Limited Parking"
-              ]
-            },
-            {
-              "amenity": "6412cd0154d14f219f4199e2",
-              "details": []
-            },
-            {
-              "amenity": "6412cd0154d14f219f4199e3",
-              "details": []
-            },
-            {
-              "amenity": "6412cd0154d14f219f4199e4",
-              "details": []
-            }
-          ],
-          "popularityScore": 9,
-          "tags": {
-            "social": [
-              {
-                "id": "POPULAR_WORKSPACE",
-                "data": {
-                  "text": "Popular",
-                  "icon": {
-                    "url": "https://res.cloudinary.com/myhq/image/upload/web/ssr/common/assets/popularity-tag.svg",
-                    "alt": "Popular Tag"
-                  }
-                }
-              }
-            ],
-            "product": [],
-            "offer": []
-          }
-        },
-        "meetingroominventories": [
-          {
-            "_id": "67e2a647df4d855c10baccdd",
-            "capacity": "24",
-            "images": [
-              {
-                "url": "https://res.cloudinary.com/myhq/image/upload/workspaces/indiqube-koramangala-3/meeting-room/plans/24-seater/yp5wsj.jpg",
-                "alt": "IndiQube meeting rooms in Koramangala, Bangalore"
-              }
-            ],
-            "equipments": [
-              {
-                "id": null
-              },
-              {
-                "id": "WIFI",
-                "title": "Wifi",
-                "icon": {
-                  "url": "https://res.cloudinary.com/myhq/image/upload/product/meeting-room/equipments/wifi.svg",
-                  "alt": "Wifi"
-                }
-              }
-            ],
-            "usecases": [
-              "Board Meeting/Presentation",
-              "Team Meeting",
-              "Brainstorming",
-              "Interviews"
-            ],
-            "pricePerHour": 4000,
-            "rackPricePerHour": 5000,
-            "unitIds": [
-              "67e2a647df4d855c10baccdd"
-            ],
-            "state": "ACTIVE",
-            "bookingType": "OFFLINE",
-            "redirectUrl": "/meetingroom/offline/indiqube-koramangala-3?capacity=24&date=2025-04-23T18%3A30%3A00.000Z",
-            "bookingRedirectUrl": "/meetingroom/offline/indiqube-koramangala-3?capacity=24&seleectedDate=2025-04-23T18%3A30%3A00.000Z"
-          }
-        ],
-        "cta": {
-          "data": {
-            "text": "Request Callback"
-          }
-        },
-        "meetingroominventorygroup": {
-          "capacity": 24,
-          "bookingType": "OFFLINE",
-          "pricing": {
-            "pricePerHour": 4000,
-            "rackPricePerHour": 5000
-          },
-          "nextAvailableDate": "2025-04-23T18:30:00.000Z"
-        }
-      },
-      {
         "_id": "63cd32745e001c7fdfb6a0f8",
         "name": "Awfis",
         "buildingName": "Prestige Blue Chip",
@@ -317,6 +166,157 @@
           "bookingType": "ONLINE_INSTANT",
           "pricing": {
             "pricePerHour": 900
+          },
+          "nextAvailableDate": "2025-04-23T18:30:00.000Z"
+        }
+      },
+      {
+        "_id": "67e2a627df4d855c10bacad0",
+        "name": "IndiQube",
+        "buildingName": "Techpoint",
+        "slug": "indiqube-koramangala-3",
+        "location": "Koramangala",
+        "city": "Bangalore",
+        "region": "Bangalore",
+        "spaceType": "coworking",
+        "directions": {
+          "connectivityDetails": []
+        },
+        "loc": {
+          "type": "Point",
+          "coordinates": [
+            77.62760112208917,
+            12.93774835085911
+          ]
+        },
+        "isFavouritedWorkspace": false,
+        "meetingroomworkspace": {
+          "blockReserve": false,
+          "timings": "10:00 am to 07:00 pm - Monday to Friday",
+          "allowBookings": true,
+          "status": "LIVE",
+          "amenities": [
+            {
+              "amenity": "6412cc7c2bb2562034983131",
+              "details": [
+                "RO Water"
+              ]
+            },
+            {
+              "amenity": "5eeb456afe3dac48253f0b66",
+              "details": [
+                "Refrigerator"
+              ],
+              "description": "Mini nooks with access to microwave, beverage stations and water coolers"
+            },
+            {
+              "amenity": "6412cd0154d14f219f4199db",
+              "details": []
+            },
+            {
+              "amenity": "6412ccb42bb256203498313e",
+              "details": []
+            },
+            {
+              "amenity": "5eeb456afe3dac48253f0b84",
+              "details": []
+            },
+            {
+              "amenity": "6412ccc22bb256203498313f",
+              "isPaid": true,
+              "details": [
+                "Limited Parking"
+              ]
+            },
+            {
+              "amenity": "6412ccc22bb2562034983140",
+              "isPaid": true,
+              "details": [
+                "Limited Parking"
+              ]
+            },
+            {
+              "amenity": "6412cd0154d14f219f4199e2",
+              "details": []
+            },
+            {
+              "amenity": "6412cd0154d14f219f4199e3",
+              "details": []
+            },
+            {
+              "amenity": "6412cd0154d14f219f4199e4",
+              "details": []
+            }
+          ],
+          "popularityScore": 9,
+          "tags": {
+            "social": [
+              {
+                "id": "POPULAR_WORKSPACE",
+                "data": {
+                  "text": "Popular",
+                  "icon": {
+                    "url": "https://res.cloudinary.com/myhq/image/upload/web/ssr/common/assets/popularity-tag.svg",
+                    "alt": "Popular Tag"
+                  }
+                }
+              }
+            ],
+            "product": [],
+            "offer": []
+          }
+        },
+        "meetingroominventories": [
+          {
+            "_id": "67e2a647df4d855c10baccdd",
+            "capacity": "24",
+            "images": [
+              {
+                "url": "https://res.cloudinary.com/myhq/image/upload/workspaces/indiqube-koramangala-3/meeting-room/plans/24-seater/yp5wsj.jpg",
+                "alt": "IndiQube meeting rooms in Koramangala, Bangalore"
+              }
+            ],
+            "equipments": [
+              {
+                "id": null
+              },
+              {
+                "id": "WIFI",
+                "title": "Wifi",
+                "icon": {
+                  "url": "https://res.cloudinary.com/myhq/image/upload/product/meeting-room/equipments/wifi.svg",
+                  "alt": "Wifi"
+                }
+              }
+            ],
+            "usecases": [
+              "Board Meeting/Presentation",
+              "Team Meeting",
+              "Brainstorming",
+              "Interviews"
+            ],
+            "pricePerHour": 4000,
+            "rackPricePerHour": 5000,
+            "unitIds": [
+              "67e2a647df4d855c10baccdd"
+            ],
+            "state": "ACTIVE",
+            "bookingType": "OFFLINE",
+            "redirectUrl": "/meetingroom/offline/indiqube-koramangala-3?capacity=24&date=2025-04-23T18%3A30%3A00.000Z",
+            "bookingRedirectUrl": "/meetingroom/offline/indiqube-koramangala-3?capacity=24&seleectedDate=2025-04-23T18%3A30%3A00.000Z"
+          }
+        ],
+        "cta": {
+          "data": {
+            "text": "Request Callback"
+          }
+        },
+        "meetingroominventorygroup": {
+          "capacity": 24,
+          "bookingType": "OFFLINE",
+          "pricing": {
+            "pricePerHour": 4000,
+            "rackPricePerHour": 5000
           },
           "nextAvailableDate": "2025-04-23T18:30:00.000Z"
         }
@@ -1378,6 +1378,157 @@
         }
       },
       {
+        "_id": "5f59d8fa33d37a3c5045aae2",
+        "name": "91springboard",
+        "buildingName": "Padmavati Complex",
+        "slug": "91springboard-koramangala",
+        "location": "Koramangala",
+        "city": "Bangalore",
+        "region": "Bangalore",
+        "spaceType": "coworking",
+        "directions": {
+          "bus": "Nearest bus station is Indoor Statium",
+          "connectivityDetails": []
+        },
+        "loc": {
+          "type": "Point",
+          "coordinates": [
+            77.621372,
+            12.943357
+          ]
+        },
+        "isFavouritedWorkspace": false,
+        "meetingroomworkspace": {
+          "blockReserve": false,
+          "timings": "12:00 am to 11:59 pm - Monday to Sunday",
+          "allowBookings": true,
+          "status": "LIVE",
+          "amenities": [
+            {
+              "amenity": "5eeb456afe3dac48253f0b66",
+              "details": [],
+              "description": "Mini nooks with access to microwave, beverage stations and water coolers"
+            },
+            {
+              "amenity": "5eeb456afe3dac48253f0b7b",
+              "isPaid": false,
+              "details": []
+            },
+            {
+              "amenity": "5eeb456afe3dac48253f0b7e",
+              "isPaid": false,
+              "details": []
+            },
+            {
+              "amenity": "5eeb456afe3dac48253f0b84",
+              "details": []
+            },
+            {
+              "amenity": "6412cc7c2bb2562034983131",
+              "details": []
+            },
+            {
+              "amenity": "6412ccb42bb256203498313e",
+              "details": []
+            },
+            {
+              "amenity": "6412ccc22bb256203498313f",
+              "isPaid": false,
+              "details": []
+            },
+            {
+              "amenity": "6412ccc22bb2562034983140",
+              "isPaid": false,
+              "details": []
+            },
+            {
+              "amenity": "6412cd0154d14f219f4199db",
+              "details": []
+            }
+          ],
+          "popularityScore": 8,
+          "tags": {
+            "social": [
+              {
+                "id": "POPULAR_WORKSPACE",
+                "data": {
+                  "text": "Popular",
+                  "icon": {
+                    "url": "https://res.cloudinary.com/myhq/image/upload/web/ssr/common/assets/popularity-tag.svg",
+                    "alt": "Popular Tag"
+                  }
+                }
+              }
+            ],
+            "product": [],
+            "offer": []
+          }
+        },
+        "meetingroominventories": [
+          {
+            "_id": "67972b9944197e3b4951d1a7",
+            "capacity": "18",
+            "images": [
+              {
+                "url": "https://res.cloudinary.com/myhq/image/upload/workspaces/91springboard-koramangala/meeting-room/plans/18-seater/pzkt55.png",
+                "alt": "91springboard meeting rooms in Koramangala, Bangalore"
+              },
+              {
+                "url": "https://res.cloudinary.com/myhq/image/upload/workspaces/91springboard-koramangala/meeting-room/plans/18-seater/bzt7zw.png",
+                "alt": "91springboard conference rooms in Koramangala, Bangalore"
+              }
+            ],
+            "equipments": [
+              {
+                "id": "WHITEBOARD",
+                "title": "Whiteboard",
+                "icon": {
+                  "url": "https://res.cloudinary.com/myhq/image/upload/product/meeting-room/equipments/whiteboard.svg",
+                  "alt": "Whiteboard"
+                }
+              },
+              {
+                "id": "WIFI",
+                "title": "Wifi",
+                "icon": {
+                  "url": "https://res.cloudinary.com/myhq/image/upload/product/meeting-room/equipments/wifi.svg",
+                  "alt": "Wifi"
+                }
+              }
+            ],
+            "usecases": [
+              "Board Meeting/Presentation",
+              "Team Meeting",
+              "Brainstorming",
+              "Interviews"
+            ],
+            "pricePerHour": 2000,
+            "rackPricePerHour": 3000,
+            "unitIds": [
+              "67972b9944197e3b4951d1a7"
+            ],
+            "state": "ACTIVE",
+            "bookingType": "OFFLINE",
+            "redirectUrl": "/meetingroom/offline/91springboard-koramangala?capacity=18&date=2025-04-23T18%3A30%3A00.000Z",
+            "bookingRedirectUrl": "/meetingroom/offline/91springboard-koramangala?capacity=18&seleectedDate=2025-04-23T18%3A30%3A00.000Z"
+          }
+        ],
+        "cta": {
+          "data": {
+            "text": "Request Callback"
+          }
+        },
+        "meetingroominventorygroup": {
+          "capacity": 18,
+          "bookingType": "OFFLINE",
+          "pricing": {
+            "pricePerHour": 2000,
+            "rackPricePerHour": 3000
+          },
+          "nextAvailableDate": "2025-04-23T18:30:00.000Z"
+        }
+      },
+      {
         "_id": "60b1398d23807b014e504c5c",
         "name": "WeWork",
         "buildingName": "Prestige Atlanta",
@@ -1816,157 +1967,6 @@
             "rackPricePerHour": 4000,
             "offerPricePerHour": 2250,
             "offerMessage": "Use MYHQ50"
-          },
-          "nextAvailableDate": "2025-04-23T18:30:00.000Z"
-        }
-      },
-      {
-        "_id": "5f59d8fa33d37a3c5045aae2",
-        "name": "91springboard",
-        "buildingName": "Padmavati Complex",
-        "slug": "91springboard-koramangala",
-        "location": "Koramangala",
-        "city": "Bangalore",
-        "region": "Bangalore",
-        "spaceType": "coworking",
-        "directions": {
-          "bus": "Nearest bus station is Indoor Statium",
-          "connectivityDetails": []
-        },
-        "loc": {
-          "type": "Point",
-          "coordinates": [
-            77.621372,
-            12.943357
-          ]
-        },
-        "isFavouritedWorkspace": false,
-        "meetingroomworkspace": {
-          "blockReserve": false,
-          "timings": "12:00 am to 11:59 pm - Monday to Sunday",
-          "allowBookings": true,
-          "status": "LIVE",
-          "amenities": [
-            {
-              "amenity": "5eeb456afe3dac48253f0b66",
-              "details": [],
-              "description": "Mini nooks with access to microwave, beverage stations and water coolers"
-            },
-            {
-              "amenity": "5eeb456afe3dac48253f0b7b",
-              "isPaid": false,
-              "details": []
-            },
-            {
-              "amenity": "5eeb456afe3dac48253f0b7e",
-              "isPaid": false,
-              "details": []
-            },
-            {
-              "amenity": "5eeb456afe3dac48253f0b84",
-              "details": []
-            },
-            {
-              "amenity": "6412cc7c2bb2562034983131",
-              "details": []
-            },
-            {
-              "amenity": "6412ccb42bb256203498313e",
-              "details": []
-            },
-            {
-              "amenity": "6412ccc22bb256203498313f",
-              "isPaid": false,
-              "details": []
-            },
-            {
-              "amenity": "6412ccc22bb2562034983140",
-              "isPaid": false,
-              "details": []
-            },
-            {
-              "amenity": "6412cd0154d14f219f4199db",
-              "details": []
-            }
-          ],
-          "popularityScore": 8,
-          "tags": {
-            "social": [
-              {
-                "id": "POPULAR_WORKSPACE",
-                "data": {
-                  "text": "Popular",
-                  "icon": {
-                    "url": "https://res.cloudinary.com/myhq/image/upload/web/ssr/common/assets/popularity-tag.svg",
-                    "alt": "Popular Tag"
-                  }
-                }
-              }
-            ],
-            "product": [],
-            "offer": []
-          }
-        },
-        "meetingroominventories": [
-          {
-            "_id": "67972b9944197e3b4951d1a7",
-            "capacity": "18",
-            "images": [
-              {
-                "url": "https://res.cloudinary.com/myhq/image/upload/workspaces/91springboard-koramangala/meeting-room/plans/18-seater/pzkt55.png",
-                "alt": "91springboard meeting rooms in Koramangala, Bangalore"
-              },
-              {
-                "url": "https://res.cloudinary.com/myhq/image/upload/workspaces/91springboard-koramangala/meeting-room/plans/18-seater/bzt7zw.png",
-                "alt": "91springboard conference rooms in Koramangala, Bangalore"
-              }
-            ],
-            "equipments": [
-              {
-                "id": "WHITEBOARD",
-                "title": "Whiteboard",
-                "icon": {
-                  "url": "https://res.cloudinary.com/myhq/image/upload/product/meeting-room/equipments/whiteboard.svg",
-                  "alt": "Whiteboard"
-                }
-              },
-              {
-                "id": "WIFI",
-                "title": "Wifi",
-                "icon": {
-                  "url": "https://res.cloudinary.com/myhq/image/upload/product/meeting-room/equipments/wifi.svg",
-                  "alt": "Wifi"
-                }
-              }
-            ],
-            "usecases": [
-              "Board Meeting/Presentation",
-              "Team Meeting",
-              "Brainstorming",
-              "Interviews"
-            ],
-            "pricePerHour": 2000,
-            "rackPricePerHour": 3000,
-            "unitIds": [
-              "67972b9944197e3b4951d1a7"
-            ],
-            "state": "ACTIVE",
-            "bookingType": "OFFLINE",
-            "redirectUrl": "/meetingroom/offline/91springboard-koramangala?capacity=18&date=2025-04-23T18%3A30%3A00.000Z",
-            "bookingRedirectUrl": "/meetingroom/offline/91springboard-koramangala?capacity=18&seleectedDate=2025-04-23T18%3A30%3A00.000Z"
-          }
-        ],
-        "cta": {
-          "data": {
-            "text": "Request Callback"
-          }
-        },
-        "meetingroominventorygroup": {
-          "capacity": 18,
-          "bookingType": "OFFLINE",
-          "pricing": {
-            "pricePerHour": 2000,
-            "rackPricePerHour": 3000
           },
           "nextAvailableDate": "2025-04-23T18:30:00.000Z"
         }

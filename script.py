@@ -134,11 +134,11 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
         st.text(f"Link: {link}")
 
         for url in photo_urls:
-            st.image(url, caption="Meeting Room", use_column_width=True)
+            st.image(url, caption="Meeting Room", use_container_width=True)
 
     return results
 
-def send_workspace_email(results, sender_email, receiver_email, input_data: dict,app_password, timings):
+def send_workspace_email(results, sender_email, receiver_email, input_data: dict, app_password, timings, cc_email=None):
     city = input_data["selectedFilters"]["CITY"].title()
     capacity = input_data["selectedFilters"]["CAPACITY"]
     raw_date = input_data["selectedFilters"]["DATE_DURATION_TIME"]["BOOKING_DATE"]
@@ -148,10 +148,13 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
     day = dt.day
     suffix = "th" if 11 <= day <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(day % 10, "th")
     formatted_date = dt.strftime(f"%-d{suffix} %B %Y")
+
     msg = MIMEMultipart()
     msg['Subject'] = 'Workspace Options from myHQ'
     msg['From'] = sender_email
     msg['To'] = receiver_email
+    if cc_email:
+        msg['Cc'] = cc_email
 
     workspace_blocks = ""
     for i, res in enumerate(results, 1):
@@ -208,7 +211,7 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
     html_body = f"""
     <html>
     <body style="font-family: Arial, sans-serif; line-height: 1.6;">
-    <p>Hi,</p>
+    <p>Hi Kuwar,</p>
 
     <p>It was nice connecting with you over the call. Thank you for sharing your requirements with us. We are glad you chose us to fulfil your workspace needs. As discussed, I am sharing the complete details below with the options for your reference.</p>
 
@@ -253,12 +256,26 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
 
     msg.attach(MIMEText(html_body, "html"))
 
+    # Prepare full recipient list
+    to_list = [receiver_email]
+    if cc_email:
+        if isinstance(cc_email, str):
+            cc_list = [email.strip() for email in cc_email.split(",")]
+        elif isinstance(cc_email, list):
+            cc_list = cc_email
+        else:
+            cc_list = []
+        to_list += cc_list
+    else:
+        cc_list = []
+
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
         server.starttls()
         server.login(sender_email, app_password)
-        server.sendmail(msg["From"], msg["To"], msg.as_string())
+        server.sendmail(sender_email, to_list, msg.as_string())
 
     print("Email sent successfully!")
+
     
     
 
@@ -267,7 +284,8 @@ if data:
     results = extract_workspace_details(data,input_data,5)
     sender_email = "ayaan.gautam@myhq.in"
     receiver_email = "ayaangautam@gmail.com"
+    cc_email = "kuwarjain394@gmail.com"
     app_password = 'jmzq bmmu jhmo aviw'
 
     timings = "10:00 AM to 5:00 PM"
-    send_workspace_email(results, sender_email, receiver_email ,input_data, app_password,timings)
+    send_workspace_email(results, sender_email, receiver_email ,input_data, app_password,timings, cc_email)
