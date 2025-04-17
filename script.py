@@ -281,11 +281,11 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
 
 
 if data:
-    results = extract_workspace_details(data,input_data,5)
+    # results = extract_workspace_details(data,input_data,5)
     sender_email = "ayaan.gautam@myhq.in"
     receiver_email = "ayaangautam@gmail.com"
     cc_email = "kuwarjain394@gmail.com"
     app_password = 'jmzq bmmu jhmo aviw'
 
     timings = "10:00 AM to 5:00 PM"
-    send_workspace_email(results, sender_email, receiver_email ,input_data, app_password,timings, cc_email)
+    # send_workspace_email(results, sender_email, receiver_email ,input_data, app_password,timings, cc_email)
