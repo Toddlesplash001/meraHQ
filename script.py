@@ -20,8 +20,8 @@ try:
     data = response.json()
 
     # OPTIONAL: Save a copy for debugging
-    with open("live_response.json", "w") as f:
-        json.dump(data, f, indent=2)
+    # with open("live_response.json", "w") as f:
+    #     json.dump(data, f, indent=2)
 
     # Validate expected structure
     if "data" in data and "workspaces" in data["data"]:
