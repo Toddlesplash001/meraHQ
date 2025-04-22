@@ -39,7 +39,7 @@
                 </select>
             </div>
 
-          <!--    <div class="form-group">
+            <!--    <div class="form-group">
                 <label for="localities">Localities</label>
                <input type="text" id="localities" name="localities" placeholder="Enter localities"> 
                 <select id="localities" name="localities" required>
@@ -82,8 +82,13 @@
                 <label for="timeSlot">Time Slot</label>
                 <select id="timeSlot" name="timeSlot" required>
                     <option value="" style="color: #999;">Select Time Slot</option>
+                    <option value="FULL_DAY">Full Day</option>
+                    <option value="MORNING">Morning (before 12 noon)</option>
+                    <option value="AFTERNOON">Afternoon (12 noon to 4 pm)</option>
+                    <option value="EVENING">Evening (after 4 pm)</option>
                 </select>
             </div>
+
 
             <div class="form-group">
                 <label for="sortBy">Sort By</label>
@@ -104,10 +109,6 @@
             </div>
 
 
-            
-
-
-
             <div class="form-group">
                 <label>Brands</label>
                 <div class="checkbox-group" id="brandsGroup">
@@ -116,58 +117,91 @@
                             <input type="checkbox" id="selectAllBrands"> Select All
                         </label>
                     </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="wework"> WeWork
-                        </label>
+
+                    <!-- Existing entries (if needed, can remove duplicates below) -->
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="wework">
+                            WeWork</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="awfis"> AWFIS</label>
                     </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="awfis"> AWFIS
-                        </label>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="cowrks">
+                            CoWrks</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="innov8">
+                            Innov8</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="91springboard">
+                            91Springboard</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="evolve-work-studio">
+                            Evolve Work Studio</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="indiqube">
+                            IndiQube</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="smartworks">
+                            Smartworks</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="capsule-works">
+                            Capsule Works</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="alt-f-coworking"> Alt
+                            F Coworking</label></div>
+
+                    <!-- New entries -->
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="apna-office"> Apna
+                            Office</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands"
+                                value="apeejay-business-center"> Apeejay Business Center</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="blue-lotus-workadda">
+                            Blue Lotus WorkAdda</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="bootstart">
+                            Bootstart</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="esziworkn">
+                            EsziWorkN</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="garage-coworking">
+                            Garage Coworking</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="india-accelerator">
+                            India Accelerator</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="iksana-workspaces">
+                            Iksana Workspaces</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="lets-work"> Lets
+                            Work</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="lumos-cowork"> Lumos
+                            Cowork</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="martini-spaces">
+                            Martini Spaces</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="miqb"> MiQB</label>
                     </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="cowrks"> CoWrks
-                        </label>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="ofis-square"> Ofis
+                            Square</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="rands"> Rands</label>
                     </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="innov8"> Innov8
-                        </label>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="spacetime">
+                            Spacetime</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="springhouse">
+                            SpringHouse</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="sspacia">
+                            Sspacia</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="table-space"> Table
+                            Space</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="the-business-quater">
+                            The Business Quater</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="the-circle-work"> The
+                            Circle.Work</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="the-playce"> The
+                            Playce</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="tick"> Tick</label>
                     </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="91springboard"> 91Springboard
-                        </label>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="toutle-space"> Toutle
+                            Space</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="triggerxchange">
+                            TriggerXchange</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="trios"> Trios</label>
                     </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="evolve-work-studio"> Evolve work studio
-                        </label>
-                    </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="indiqube"> IndiQube
-                        </label>
-                    </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="smartworks"> Smartworks
-                        </label>
-                    </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="capsule-works"> capsule works
-                        </label>
-                    </div>
-                    <div class="checkbox-item">
-                        <label>
-                            <input type="checkbox" name="brands" value="capsule-works"> Alt F Coworking
-                        </label>
-                    </div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="urban-cabin-cowork">
+                            Urban Cabin Cowork</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="urbanwrk">
+                            UrbanWrk</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="wegrow">
+                            WeGrow</label></div>
+                    <div class="checkbox-item"><label><input type="checkbox" name="brands" value="wings-space"> Wings
+                            Space</label></div>
                 </div>
             </div>
+
 
             <div class="form-group">
                 <label>Equipments</label>
@@ -249,7 +283,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src = "script.js">
+    <script src="script.js">
     </script>
 </body>
 
