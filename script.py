@@ -41,7 +41,7 @@ except json.JSONDecodeError:
     
     
     
-def extract_workspace_details(workspace_data: dict, input_data: dict, max_results: int = 5) -> list:
+def extract_workspace_details(workspace_data: dict, input_data: dict, max_results) -> list:
     """
     Extracts and returns a list of dictionaries with workspace details.
     
