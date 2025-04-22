@@ -154,7 +154,8 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
     msg['From'] = sender_email
     msg['To'] = receiver_email
     if cc_email:
-        msg['Cc'] = cc_email
+        print("cc_email",cc_email)
+        msg['Cc'] = ", ".join(cc_email)
 
     workspace_blocks = ""
     for i, res in enumerate(results, 1):
@@ -266,6 +267,7 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
         else:
             cc_list = []
         to_list += cc_list
+        print(to_list)
     else:
         cc_list = []
 
@@ -276,15 +278,11 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
 
     print("Email sent successfully!")
 
-    
-    
-
-
 if data:
     # results = extract_workspace_details(data,input_data,5)
     sender_email = "ayaan.gautam@myhq.in"
     receiver_email = "ayaangautam@gmail.com"
-    cc_email = "kuwarjain394@gmail.com"
+    cc_email = ["kuwarjain394@gmail.com","devanshvashisht22@gmail.com"]
     app_password = 'jmzq bmmu jhmo aviw'
 
     timings = "10:00 AM to 5:00 PM"

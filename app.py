@@ -40,7 +40,7 @@ def handle_model_input():
         # Send email
         sender_email = "ayaan.gautam@myhq.in"
         receiver_email = "ayaangautam@gmail.com"
-        cc_email = "kuwarjain394@gmail.com"
+        cc_email = ["kuwarjain394@gmail.com","devanshvashisht22@gmail.com"]
         app_password = 'jmzq bmmu jhmo aviw'  # Make sure to hide this in prod
         timings = "10:00 AM to 5:00 PM"
         send_workspace_email(results, sender_email, receiver_email, input_data, app_password, timings, cc_email)
