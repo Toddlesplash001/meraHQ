@@ -103,6 +103,7 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
         # Add to results
         results.append({
             "name": name,
+            "building_name": building_name,
             "location": location,
             "city": city,
             "timings": timings,
@@ -157,7 +158,7 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
 
     workspace_blocks = ""
     for i, res in enumerate(results, 1):
-        workspace = res["name"]
+        workspace = f'{res["name"]} - {res["building_name"]}'
         address = f'{res["location"]}, {res["city"]}'
         meeting_room = f'{res["capacity"]}-Seater Room'
         hours = res["duration"]

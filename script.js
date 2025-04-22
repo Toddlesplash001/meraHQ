@@ -97,7 +97,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const date = document.getElementById("date").value;
   const duration = parseInt(document.getElementById("duration").value);
   const timeSlot = document.getElementById("timeSlot").value;
-  const sortBy = document.getElementById("sortBy").value.toUpperCase();
+  const sortBy = document.getElementById("sortBy").value;
   const priceRange = document.getElementById("priceRange").value;
   const receiverEmail = document.getElementById("receiverEmail").value;
 
