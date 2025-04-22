@@ -1,4 +1,3 @@
-import streamlit as st
 import json
 from types import SimpleNamespace
 import smtplib
@@ -24,19 +23,19 @@ try:
     #     json.dump(data, f, indent=2)
 
     # Validate expected structure
-    if "data" in data and "workspaces" in data["data"]:
-        st.success("✅ API response is valid!")
-        st.write("Workspaces found:", len(data["data"]["workspaces"]))
-    else:
-        st.warning("⚠️ Response structure unexpected!")
-        st.json(data)
+    # if "data" in data and "workspaces" in data["data"]:
+    #     st.success("✅ API response is valid!")
+    #     st.write("Workspaces found:", len(data["data"]["workspaces"]))
+    # else:
+    #     st.warning("⚠️ Response structure unexpected!")
+    #     st.json(data)
 
 except requests.exceptions.RequestException as e:
-    st.error(f"❌ Request failed: {e}")
+    # st.error(f"❌ Request failed: {e}")
     data = None
 except json.JSONDecodeError:
-    st.error("❌ Failed to parse JSON response")
-    st.text(response.text)
+    # st.error("❌ Failed to parse JSON response")
+    # st.text(response.text)
     data = None
     
     
@@ -57,12 +56,11 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
 
     # Get duration from input filters with fallback
     duration = input_data.get("selectedFilters", {}).get("DATE_DURATION_TIME", {}).get("DURATION", 1)
-
     results = []
 
     workspaces = workspace_data.get("data", {}).get("workspaces", [])
     if not workspaces:
-        st.warning("No workspaces found in data.")
+        # st.warning("No workspaces found in data.")
         return results
 
     for i in range(min(max_results, len(workspaces))):
@@ -119,22 +117,22 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
         })
 
         # Optional UI display (remove/comment out if running headless or using this purely as a function)
-        st.title(name)
-        st.subheader(building_name)
-        st.text(f"Location: {location}")
-        st.text(f"City: {city}")
-        st.text(f"Workspace Type: {space_type}")
-        st.text(f"Timings: {timings}")
-        st.text(f"Status: {status}")
-        st.text(f"Capacity: {capacity}")
-        st.text(f"Price per hour: ₹{pricePerHour}")
-        st.text(f"Duration: {duration}")
-        st.text(f"Total Price: ₹{totalPrice}")
-        st.text(f"Amenities Included: {amenities}")
-        st.text(f"Link: {link}")
+        # st.title(name)
+        # st.subheader(building_name)
+        # st.text(f"Location: {location}")
+        # st.text(f"City: {city}")
+        # st.text(f"Workspace Type: {space_type}")
+        # st.text(f"Timings: {timings}")
+        # st.text(f"Status: {status}")
+        # st.text(f"Capacity: {capacity}")
+        # st.text(f"Price per hour: ₹{pricePerHour}")
+        # st.text(f"Duration: {duration}")
+        # st.text(f"Total Price: ₹{totalPrice}")
+        # st.text(f"Amenities Included: {amenities}")
+        # st.text(f"Link: {link}")
 
-        for url in photo_urls:
-            st.image(url, caption="Meeting Room", use_container_width=True)
+        # for url in photo_urls:
+        #     st.image(url, caption="Meeting Room", use_container_width=True)
 
     return results
 

@@ -14,7 +14,8 @@ function generateTimeSlots() {
 }
 
 document.getElementById("city").addEventListener("change", async function () {
-  const selectedCity = this.value;
+  console.log("this.value", this.value);
+  const selectedCity = this.value == "Delhi" ? "new-delhi" : this.value;
 
   if (selectedCity) {
     console.log("City selected:", selectedCity);
@@ -101,7 +102,10 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
 
   // Get all form values
   const product = document.getElementById("product").value;
-  const city = document.getElementById("city").value.toLowerCase();
+  const city =
+    document.getElementById("city").value.toLowerCase() == "delhi"
+      ? "new-delhi"
+      : document.getElementById("city").value.toLowerCase();
   // const localities = document.getElementById('localities').value;
   const capacity = parseInt(document.getElementById("capacity").value);
   const date = document.getElementById("date").value;
@@ -109,6 +113,8 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const timeSlot = document.getElementById("timeSlot").value;
   const sortBy = document.getElementById("sortBy").value.toUpperCase();
   const priceRange = document.getElementById("priceRange").value;
+  const receiverEmail = document.getElementById("receiverEmail").value;
+
   // Get selected brands
   const selectedLocalities = Array.from(
     document.querySelectorAll('input[name="localities"]:checked')
@@ -128,27 +134,30 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   ).map((checkbox) => checkbox.value);
   // Create the API request payload
   const payload = {
-    url: `/${city}/meeting-room/${city}`,
-    selectedFilters: {
-      PRODUCT: product === "meeting_room" ? "MEETING_ROOM" : "DAY_PASS",
-      CITY: city,
-      LOCALITIES: selectedLocalities, // You might want to handle multiple localities
-      CAPACITY: capacity,
-      DATE_DURATION_TIME: {
-        DURATION: duration,
-        BOOKING_DATE: new Date(date).toISOString(),
-        TIME_SLOT: [],
+    receiverEmail: receiverEmail,
+    request: {
+      url: `/${city}/meeting-room/${city}`,
+      selectedFilters: {
+        PRODUCT: product === "meeting_room" ? "MEETING_ROOM" : "DAY_PASS",
+        CITY: city,
+        LOCALITIES: selectedLocalities, // You might want to handle multiple localities
+        CAPACITY: capacity,
+        DATE_DURATION_TIME: {
+          DURATION: duration,
+          BOOKING_DATE: new Date(date).toISOString(),
+          TIME_SLOT: [],
+        },
+        SORT_BY: sortBy,
+        EQUIPMENTS: [],
+        BRANDS: selectedBrands,
+        PRICE_RANGE: {
+          range: [0, parseInt(priceRange)],
+        },
+        AMENITIES: [],
       },
-      SORT_BY: sortBy,
-      EQUIPMENTS: selectedEquipments,
-      BRANDS: selectedBrands,
-      PRICE_RANGE: {
-        range: [0, parseInt(priceRange)],
-      },
-      AMENITIES: selectedAmenities,
+      pageNo: 1,
+      pageLimit: 16,
     },
-    pageNo: 1,
-    pageLimit: 16,
   };
 
   console.log("payload", payload);
@@ -181,7 +190,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload["request"]),
   })
     .then((response) => {
       if (!response.ok) {

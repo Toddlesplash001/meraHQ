@@ -24,7 +24,7 @@ def handle_model_input():
         url = "https://api.web.myhq.in/meeting-room/web/list-slug"
         try:
             print(input_data)
-            response = requests.post(url, json=input_data)
+            response = requests.post(url, json=input_data['request'])
             response.raise_for_status()
             response_data = response.json()
         except requests.exceptions.RequestException as e:
@@ -35,15 +35,16 @@ def handle_model_input():
             return jsonify({'status': 'error', 'message': 'Invalid JSON response'}), 500
 
         # Process response through your model
-        results = extract_workspace_details(response_data, input_data, 5)
-
+        # print("response_data: ",response_data,"\n")
+        results = extract_workspace_details(response_data, input_data['request'], 5)
+        print("results: ",results)
         # Send email
         sender_email = "ayaan.gautam@myhq.in"
-        receiver_email = "ayaangautam@gmail.com"
+        receiver_email = input_data['receiverEmail']
         cc_email = ["kuwarjain394@gmail.com","devanshvashisht22@gmail.com"]
         app_password = 'jmzq bmmu jhmo aviw'  # Make sure to hide this in prod
         timings = "10:00 AM to 5:00 PM"
-        send_workspace_email(results, sender_email, receiver_email, input_data, app_password, timings, cc_email)
+        send_workspace_email(results, sender_email, receiver_email, input_data["request"], app_password, timings, cc_email)
 
         return jsonify({'status': 'success'})
 
