@@ -137,7 +137,7 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
 
     return results
 
-def send_workspace_email(results, sender_email, receiver_email, input_data: dict, app_password, timings, cc_email=None):
+def send_workspace_email(results, receiver_name,sender_email, receiver_email, input_data: dict, app_password, timings, cc_email=None):
     city = input_data["selectedFilters"]["CITY"].title()
     capacity = input_data["selectedFilters"]["CAPACITY"]
     raw_date = input_data["selectedFilters"]["DATE_DURATION_TIME"]["BOOKING_DATE"]
@@ -159,7 +159,7 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
     workspace_blocks = ""
     for i, res in enumerate(results, 1):
         workspace = f'{res["name"]} - {res["building_name"]}'
-        address = f'{res["location"]}, {res["city"]}'
+        address = f'{res["location"]}'
         meeting_room = f'{res["capacity"]}-Seater Room'
         hours = res["duration"]
         price_per_hour = res["pricePerHour"]
@@ -211,7 +211,7 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
     html_body = f"""
     <html>
     <body style="font-family: Arial, sans-serif; line-height: 1.6;">
-    <p>Hi Kuwar,</p>
+    <p>Hi {receiver_name},</p>
 
     <p>It was nice connecting with you over the call. Thank you for sharing your requirements with us. We are glad you chose us to fulfil your workspace needs. As discussed, I am sharing the complete details below with the options for your reference.</p>
 
@@ -220,7 +220,6 @@ def send_workspace_email(results, sender_email, receiver_email, input_data: dict
     Timings: {timings}<br>
     Location: {city}<br>
     No. of Pax: {capacity}</p>
-
     {workspace_blocks}
 
     <p><strong>Brief intro about myHQ:</strong><br>

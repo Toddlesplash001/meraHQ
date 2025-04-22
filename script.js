@@ -61,11 +61,59 @@ document.getElementById("city").addEventListener("change", async function () {
 });
 
 // Update price range value display
-function updatePriceValue() {
-  const priceRange = document.getElementById("priceRange");
-  const priceValue = document.getElementById("priceValue");
-  priceValue.textContent = `₹${priceRange.value}`;
+// function updatePriceValue() {
+//   const priceRange = document.getElementById("priceRange");
+//   const priceValue = document.getElementById("priceValue");
+//   // priceValue.textContent = `₹${priceRange.value}`;
+// }
+
+function setupPriceRangeSlider() {
+  const minSlider = document.getElementById("priceMin");
+  const maxSlider = document.getElementById("priceMax");
+  const minDisplay = document.getElementById("minValue");
+  const maxDisplay = document.getElementById("maxValue");
+  const rangeTrack = document.querySelector(".slider-track::before");
+
+  function updateValues() {
+    let minVal = parseInt(minSlider.value);
+    let maxVal = parseInt(maxSlider.value);
+
+    if (minVal > maxVal) {
+      if (this === minSlider) {
+        minVal = maxVal;
+        minSlider.value = maxVal;
+      } else {
+        maxVal = minVal;
+        maxSlider.value = minVal;
+      }
+    }
+
+    minDisplay.textContent = minVal.toLocaleString();
+    maxDisplay.textContent = maxVal.toLocaleString();
+
+    // Update the visual range track
+    const minPercentage =
+      ((minVal - parseInt(minSlider.min)) /
+        (parseInt(minSlider.max) - parseInt(minSlider.min))) *
+      100;
+    const maxPercentage =
+      ((maxVal - parseInt(maxSlider.min)) /
+        (parseInt(maxSlider.max) - parseInt(maxSlider.min))) *
+      100;
+
+    rangeTrack.style.left = `${minPercentage}%`;
+    rangeTrack.style.right = `${100 - maxPercentage}%`;
+  }
+
+  minSlider.addEventListener("input", updateValues);
+  maxSlider.addEventListener("input", updateValues);
+
+  // Initial update
+  updateValues();
 }
+
+// Call this function when the DOM is loaded
+// document.addEventListener("DOMContentLoaded", setupPriceRangeSlider);
 
 // Email validation
 function validateEmail(email) {
@@ -112,8 +160,12 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const duration = parseInt(document.getElementById("duration").value);
   const timeSlot = document.getElementById("timeSlot").value;
   const sortBy = document.getElementById("sortBy").value;
-  const priceRange = document.getElementById("priceRange").value;
+  // const priceRange = document.getElementById("priceRange").value;
   const receiverEmail = document.getElementById("receiverEmail").value;
+  const name = document.getElementById("name").value;
+  const priceMin = document.getElementById("priceMin").value;
+  const priceMax = document.getElementById("priceMax").value;
+
 
   // Get selected brands
   const selectedLocalities = Array.from(
@@ -135,6 +187,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   // Create the API request payload
   const payload = {
     receiverEmail: receiverEmail,
+    name: name,
     request: {
       url: `/${city}/meeting-room/${city}`,
       selectedFilters: {
@@ -151,7 +204,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
         EQUIPMENTS: [],
         BRANDS: selectedBrands,
         PRICE_RANGE: {
-          range: [0, parseInt(priceRange)],
+          range: [parseInt(priceMin), parseInt(priceMax)],
         },
         AMENITIES: [],
       },
@@ -232,12 +285,12 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
 // Initialize the form
 document.addEventListener("DOMContentLoaded", function () {
   // generateTimeSlots();
-  updatePriceValue();
+  // updatePriceValue();
 
   // Add event listener for price range
-  document
-    .getElementById("priceRange")
-    .addEventListener("input", updatePriceValue);
+  // document
+  //   .getElementById("priceRange")
+    // .addEventListener("input", updatePriceValue);
 
   // Setup select all functionality
   setupSelectAll("brandsGroup", "selectAllBrands");
@@ -277,39 +330,38 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     `;
   document.head.appendChild(style);
-
-  setupPriceRangeSlider();
+  setupPriceRangeSlider()
 });
 
-function setupPriceRangeSlider() {
-  const minSlider = document.getElementById("priceMin");
-  const maxSlider = document.getElementById("priceMax");
-  const minDisplay = document.getElementById("minValue");
-  const maxDisplay = document.getElementById("maxValue");
+// function setupPriceRangeSlider() {
+//   const minSlider = document.getElementById("priceMin");
+//   const maxSlider = document.getElementById("priceMax");
+//   const minDisplay = document.getElementById("minValue");
+//   const maxDisplay = document.getElementById("maxValue");
 
-  function updateValues() {
-    let minVal = parseInt(minSlider.value);
-    let maxVal = parseInt(maxSlider.value);
+//   function updateValues() {
+//     let minVal = parseInt(minSlider.value);
+//     let maxVal = parseInt(maxSlider.value);
 
-    // Ensure min doesn't exceed max
-    if (minVal > maxVal) {
-      if (this === minSlider) {
-        minVal = maxVal;
-        minSlider.value = maxVal;
-      } else {
-        maxVal = minVal;
-        maxSlider.value = minVal;
-      }
-    }
+//     // Ensure min doesn't exceed max
+//     if (minVal > maxVal) {
+//       if (this === minSlider) {
+//         minVal = maxVal;
+//         minSlider.value = maxVal;
+//       } else {
+//         maxVal = minVal;
+//         maxSlider.value = minVal;
+//       }
+//     }
 
-    // Update display values
-    minDisplay.textContent = minVal.toLocaleString();
-    maxDisplay.textContent = maxVal.toLocaleString();
-  }
+//     // Update display values
+//     minDisplay.textContent = minVal.toLocaleString();
+//     maxDisplay.textContent = maxVal.toLocaleString();
+//   }
 
-  minSlider.addEventListener("input", updateValues);
-  maxSlider.addEventListener("input", updateValues);
+//   minSlider.addEventListener("input", updateValues);
+//   maxSlider.addEventListener("input", updateValues);
 
-  // Initial update
-  updateValues();
-}
+//   // Initial update
+//   updateValues();
+// }

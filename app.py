@@ -44,7 +44,7 @@ def handle_model_input():
         cc_email = ["kuwarjain394@gmail.com","devanshvashisht22@gmail.com"]
         app_password = 'jmzq bmmu jhmo aviw'  # Make sure to hide this in prod
         timings = "10:00 AM to 5:00 PM"
-        send_workspace_email(results, sender_email, receiver_email, input_data["request"], app_password, timings, cc_email)
+        send_workspace_email(results, input_data["name"],sender_email, receiver_email, input_data["request"], app_password, timings, cc_email)
 
         return jsonify({'status': 'success'})
 
