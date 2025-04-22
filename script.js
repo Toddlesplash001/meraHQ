@@ -248,12 +248,12 @@ document.addEventListener("DOMContentLoaded", function () {
   flatpickr("#date", {
     dateFormat: "Y-m-d",
     minDate: "today",
-    maxDate: new Date().fp_incr(30), // Allow booking up to 30 days in advance
+    maxDate: new Date().fp_incr(60), // Allow booking up to 30 days in advance
     disable: [
-      function (date) {
-        // Disable weekends
-        return date.getDay() === 0 || date.getDay() === 6;
-      },
+      // function (date) {
+      //   // Disable weekends
+      //   return date.getDay() === 0 || date.getDay() === 6;
+      // },
     ],
     locale: {
       firstDayOfWeek: 1, // Start week on Monday
