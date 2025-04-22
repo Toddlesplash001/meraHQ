@@ -1,3 +1,17 @@
+function generateTimeSlots() {
+  const timeSlotSelect = document.getElementById("timeSlot");
+  const startHour = 9; // 9 AM
+  const endHour = 20; // 8 PM
+
+  for (let hour = startHour; hour < endHour; hour++) {
+    const startTime = `${hour}:00`;
+    const endTime = `${hour + 1}:00`;
+    const option = document.createElement("option");
+    option.value = `${startTime}-${endTime}`;
+    option.textContent = `${startTime} - ${endTime}`;
+    timeSlotSelect.appendChild(option);
+  }
+}
 
 document.getElementById("city").addEventListener("change", async function () {
   console.log("this.value", this.value);
