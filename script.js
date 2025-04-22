@@ -231,7 +231,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
 
 // Initialize the form
 document.addEventListener("DOMContentLoaded", function () {
-  generateTimeSlots();
+  // generateTimeSlots();
   updatePriceValue();
 
   // Add event listener for price range
