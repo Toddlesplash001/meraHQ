@@ -165,6 +165,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const name = document.getElementById("name").value;
   const priceMin = document.getElementById("priceMin").value;
   const priceMax = document.getElementById("priceMax").value;
+  const count = document.getElementById("count").value;
 
 
   // Get selected brands
@@ -188,6 +189,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const payload = {
     receiverEmail: receiverEmail,
     name: name,
+    count: count,
     request: {
       url: `/${city}/meeting-room/${city}`,
       selectedFilters: {

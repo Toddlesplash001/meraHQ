@@ -36,7 +36,7 @@ def handle_model_input():
 
         # Process response through your model
         # print("response_data: ",response_data,"\n")
-        results = extract_workspace_details(response_data, input_data['request'], 6)
+        results = extract_workspace_details(response_data, input_data['request'], int(input_data["count"]))
         print("results: ",results)
         # Send email
         sender_email = "ayaan.gautam@myhq.in"
