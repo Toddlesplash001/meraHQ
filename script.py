@@ -9,20 +9,16 @@ import requests
 def extract_workspace_details(workspace_data: dict, input_data: dict, max_results) -> list:
     duration = input_data.get("selectedFilters", {}).get("DATE_DURATION_TIME", {}).get("DURATION", 1)
     results = []
-
     workspaces = workspace_data.get("data", {}).get("workspaces", [])
     if not workspaces:
         return results
 
     for i in range(min(max_results, len(workspaces))):
         workspace = workspaces[i]
-
         name = workspace.get('name', 'N/A')
         building_name = workspace.get('buildingName', 'N/A')
         location = f"{workspace.get('location', '')}, {workspace.get('region', '')}"
         city = workspace.get('city', 'N/A')
-        space_type = workspace.get('spaceType', 'N/A')
-
         meetingroomworkspace = workspace.get('meetingroomworkspace', {})
         timings = meetingroomworkspace.get('timings', 'N/A')
         status = meetingroomworkspace.get('status', 'N/A')
@@ -33,11 +29,9 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
 
         inventory = inventories[0]
         obj = SimpleNamespace(**inventory)
-
         capacity = getattr(obj, 'capacity', 0)
         pricePerHour = getattr(obj, 'pricePerHour', 0)
         totalPrice = pricePerHour * duration
-
         photo_urls = [img.get('url') for img in getattr(obj, 'images', []) if 'url' in img]
 
         inventory_group = workspace.get('meetingroominventorygroup', {})
@@ -63,7 +57,6 @@ def extract_workspace_details(workspace_data: dict, input_data: dict, max_result
             "link": link,
             "photos": photo_urls
         })
-
     return results
 
 def send_workspace_email(results, receiver_name, sender_email, receiver_email, input_data: dict, app_password, timings, cc_email=None):
@@ -79,14 +72,15 @@ def send_workspace_email(results, receiver_name, sender_email, receiver_email, i
     msg = MIMEMultipart()
     msg['Subject'] = 'Workspace Options from myHQ'
     msg['From'] = sender_email
-    if receiver_email:
-        if isinstance(cc_email, str):
-            receiver_list = [email.strip() for email in cc_email.split(",")]
-        elif isinstance(cc_email, list):
-            receiver_list = cc_email
-        else:
-            receiver_list = []
-    msg['To'] = ", ".join(receiver_email)
+
+    if isinstance(receiver_email, str):
+        receiver_list = [email.strip() for email in receiver_email.split(",")]
+    elif isinstance(receiver_email, list):
+        receiver_list = receiver_email
+    else:
+        receiver_list = []
+
+    msg['To'] = ", ".join(receiver_list)
 
     if cc_email:
         if isinstance(cc_email, str):
@@ -95,7 +89,6 @@ def send_workspace_email(results, receiver_name, sender_email, receiver_email, i
             cc_list = cc_email
         else:
             cc_list = []
-
         msg['Cc'] = ", ".join(cc_list)
         to_list = receiver_list + cc_list
     else:
@@ -142,11 +135,8 @@ def send_workspace_email(results, receiver_name, sender_email, receiver_email, i
         Meeting Room: {meeting_room}<br>
         <a href="{link}">View Workspace</a><br>
         <strong>Price:</strong></p>
-
         {price_table}
-
         <p><strong>Amenities Included:</strong> {amenities}</p>
-
         <p><strong>Photos:</strong><br>{photos_html}</p>
         """
 
@@ -156,41 +146,32 @@ def send_workspace_email(results, receiver_name, sender_email, receiver_email, i
     <html>
     <body style="font-family: Arial, sans-serif; line-height: 1.6;">
     <p>Hi {receiver_name},</p>
-
     <p>It was nice connecting with you over the call. Thank you for sharing your requirements with us. We are glad you chose us to fulfil your workspace needs. As discussed, I am sharing the complete details below with the options for your reference.</p>
-
     <p><strong>Reconfirming Requirements</strong><br>
     Dates: {formatted_date}<br>
     Timings: {timings}<br>
     Location: {city}<br>
     No. of Pax: {capacity}</p>
     {workspace_blocks}
-
     <p><strong>Brief intro about myHQ:</strong><br>
-    We, at myHQ, are helping individuals and teams work more productively in this new normal of remote working through our tech-enabled flexible workspace solutions. Instead of bringing the employee to the office, we help you take the office to the employee! myHQ is the largest coworking marketplace with over 800+ coworking spaces across the country.</p>
-
-    <p><strong>Meeting Rooms:</strong> Hold your client meetings, workshops or get your team to present in our fully-serviced meeting rooms. Book on-demand by the hour, and ensure your meeting runs smoothly. It is cheaper than even a cup of coffee in some places – starting at ₹250 per seat per day, available across India!</p>
-
-    <p>Website Link: <a href="https://www.myhq.in">Click here to find your desired meeting room</a></p>
-
+    We, at myHQ, are helping individuals and teams work more productively through our tech-enabled flexible workspace solutions. myHQ is the largest coworking marketplace with over 800+ coworking spaces across India.</p>
+    <p><strong>Meeting Rooms:</strong> Book on-demand by the hour, starting ₹250 per seat/day, available PAN India.</p>
+    <p>Website Link: <a href="https://www.myhq.in">Find your desired meeting room</a></p>
     <p><strong>Why corporates choose us:</strong></p>
     <ul>
     <li>Access to 200+ meeting rooms across India</li>
-    <li>Pay-Per-Use pricing (e.g., WeWork from ₹250/hour/person)</li>
+    <li>Pay-Per-Use pricing</li>
     <li>No fixed monthly rental</li>
     <li>Free unlimited WiFi, Tea/Coffee</li>
     <li>No lock-in, deposit, or minimum commitment</li>
     </ul>
-
     <p><strong>Some of our clients:</strong> Meesho, VTION, Khalsa Aid, Ask Media, Transfive, Squadstack, Sennheiser, Mother Dairy</p>
-
     <p>Hope this helps! Feel free to call me at +91-9266777965. We'd be happy to assist you further. :)</p>
-
     <p>Best regards,<br>
     Ayaan Gautam<br>
     Associate - Sales (myHQ)<br>
     Upflex Anarock India Pvt. Ltd.<br>
-    7th Floor, Building No. 9B, DLF Cyber City, Phase III, Gurgaon 122002<br>
+    Gurgaon, India<br>
     M: +91-9266777965<br>
     W: <a href="https://www.myhq.in">www.myhq.in</a></p>
     </body>
@@ -203,4 +184,3 @@ def send_workspace_email(results, receiver_name, sender_email, receiver_email, i
         server.starttls()
         server.login(sender_email, app_password)
         server.sendmail(sender_email, to_list, msg.as_string())
-
