@@ -162,6 +162,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const sortBy = document.getElementById("sortBy").value;
   // const priceRange = document.getElementById("priceRange").value;
   const receiverEmail = document.getElementById("receiverEmail").value;
+  const ccEmail = document.getElementById("ccEmail").value;
   const name = document.getElementById("name").value;
   const priceMin = document.getElementById("priceMin").value;
   const priceMax = document.getElementById("priceMax").value;
@@ -189,6 +190,7 @@ document.getElementById("bookingForm").addEventListener("submit", function (e) {
   const payload = {
     receiverEmail: receiverEmail,
     name: name,
+    ccEmail: ccEmail,
     count: count,
     request: {
       url: `/${city}/meeting-room/${city}`,
